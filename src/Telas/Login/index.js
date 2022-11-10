@@ -10,12 +10,13 @@ export default Login = (props) => {
 
     useEffect(() => {
         async function carregaDados() {
-            await firebase.database().ref("usuario").on("value",
-            (snapshot) => { setUsuario(snapshot.val()) });
-            await firebase.database().ref("senha").on("value",
-            (snapshot) => { setSenha(snapshot.val()) });
+            await firebase.database().ref().on('value', (snapshot) => {
+                setUsuario(snapshot.val().usuario);
+                setSenha(snapshot.val().senha);
+            });
         }
-    });
+        carregaDados();
+    }, []);
     
     return(
         <View style={Estilos.caixa}>
@@ -36,7 +37,7 @@ export default Login = (props) => {
                 <Image
                     source={require("../../../assets/botao_urso.png")}
                     style={Estilos.botao}
-                />Entrar</Text>
+                /> Entrar</Text>
             </Pressable>
             <View style={Estilos.pressionar}>
                 <Pressable>

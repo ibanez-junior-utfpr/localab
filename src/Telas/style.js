@@ -39,7 +39,7 @@ export const Estilos = StyleSheet.create({
         padding: 10,
     },
     textoMB: {
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: "bold",
         color: "#000000",
         borderRadius: 30,
